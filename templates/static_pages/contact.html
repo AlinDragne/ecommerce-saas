@@ -1,0 +1,403 @@
+{% extends 'static_pages/base_static.html' %}
+
+{% block title %}Contact - E-Nice Help{% endblock %}
+
+{% block content %}
+<!-- Breadcrumbs -->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'landing_page' %}">E-Nice Help</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Contact</li>
+    </ol>
+</nav>
+
+<!-- Page Title -->
+<h1 class="mb-4">Contact</h1>
+
+<div class="row">
+    <!-- Left Sidebar with Contact Options -->
+    <div class="col-lg-4 mb-4">
+        <div class="content-card">
+            <h4 class="mb-3">Opțiuni de contact</h4>
+            
+            <div class="contact-options">
+                <div class="contact-option active" data-target="contact-info">
+                    <div class="contact-icon">
+                        <i class="bi bi-info-circle"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h6>Informații de contact</h6>
+                        <p class="text-muted small">Datele noastre de contact</p>
+                    </div>
+                </div>
+                
+                <div class="contact-option" data-target="contact-form">
+                    <div class="contact-icon">
+                        <i class="bi bi-envelope"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h6>Trimite un mesaj</h6>
+                        <p class="text-muted small">Formular de contact</p>
+                    </div>
+                </div>
+                
+                <div class="contact-option" data-target="contact-faq">
+                    <div class="contact-icon">
+                        <i class="bi bi-question-circle"></i>
+                    </div>
+                    <div class="contact-text">
+                        <h6>Întrebări frecvente</h6>
+                        <p class="text-muted small">Răspunsuri la întrebări comune</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Right Content Area -->
+    <div class="col-lg-8">
+        <div class="content-card">
+            <!-- Contact Info Content -->
+            <div id="contact-info" class="contact-content active">
+                <h3>Informații de contact</h3>
+                <p class="lead">Suntem aici să te ajutăm cu orice întrebare ai avea despre produsele noastre sau serviciile oferite.</p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6 mb-4">
+                        <div class="contact-detail">
+                            <div class="contact-detail-icon">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+                            <div class="contact-detail-info">
+                                <h6>Telefon</h6>
+                                <p>0310.000.000</p>
+                                <small class="text-muted">Luni - Vineri: 9:00 - 18:00</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="contact-detail">
+                            <div class="contact-detail-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <div class="contact-detail-info">
+                                <h6>Email</h6>
+                                <p>contact@e-nice.ro</p>
+                                <small class="text-muted">Răspuns în 24 de ore</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="contact-detail">
+                            <div class="contact-detail-icon">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <div class="contact-detail-info">
+                                <h6>Adresă</h6>
+                                <p>Str. Curățeniei nr. 7<br>București, România</p>
+                                <small class="text-muted">Sediu social</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="contact-detail">
+                            <div class="contact-detail-icon">
+                                <i class="bi bi-clock"></i>
+                            </div>
+                            <div class="contact-detail-info">
+                                <h6>Program</h6>
+                                <p>Luni - Vineri: 9:00 - 18:00<br>Sâmbătă: 9:00 - 14:00</p>
+                                <small class="text-muted">Duminică: Închis</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4 pt-3 border-top">
+                    <h6 class="mb-3">Urmărește-ne</h6>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="bi bi-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form Content -->
+            <div id="contact-form" class="contact-content">
+                <h3>Trimite un mesaj</h3>
+                <p class="lead">Completează formularul de mai jos și te vom contacta în cel mai scurt timp.</p>
+                
+                <form class="mt-4">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="firstName" class="form-label">Prenume *</label>
+                            <input type="text" class="form-control" id="firstName" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName" class="form-label">Nume *</label>
+                            <input type="text" class="form-control" id="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">Email *</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="phone" class="form-label">Telefon</label>
+                            <input type="tel" class="form-control" id="phone">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Subiect *</label>
+                        <select class="form-select" id="subject" required>
+                            <option value="">Alegeți un subiect</option>
+                            <option value="general">Întrebare generală</option>
+                            <option value="order">Comandă</option>
+                            <option value="return">Retur produs</option>
+                            <option value="complaint">Reclamație</option>
+                            <option value="partnership">Parteneriat</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Mesaj *</label>
+                        <textarea class="form-control" id="message" rows="5" placeholder="Scrieți mesajul vostru aici..." required></textarea>
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="privacy" required>
+                        <label class="form-check-label" for="privacy">
+                            Sunt de acord cu <a href="{% url 'terms_page' %}">politica de confidențialitate</a> *
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-send me-2"></i>Trimite mesajul
+                    </button>
+                </form>
+            </div>
+            
+            <!-- FAQ Content -->
+            <div id="contact-faq" class="contact-content">
+                <h3>Întrebări frecvente</h3>
+                <p class="lead">Găsește răspunsuri la cele mai comune întrebări despre produsele și serviciile noastre.</p>
+                
+                <div class="accordion mt-4" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq1">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                                Cum pot plasa o comandă?
+                            </button>
+                        </h2>
+                        <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Poți plasa o comandă direct pe site-ul nostru, prin telefon la 0310.000.000 sau prin email la comenzi@e-nice.ro. Livrarea se face în toată România în 1-3 zile lucrătoare.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                                Care sunt metodele de plată acceptate?
+                            </button>
+                        </h2>
+                        <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Acceptăm plăți cu cardul, ramburs și transfer bancar. Pentru comenzi peste 100 lei, transportul este gratuit.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
+                                Cum pot returna un produs?
+                            </button>
+                        </h2>
+                        <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Produsele pot fi returnate în termen de 14 zile de la primire. Pentru mai multe detalii, consultă secțiunea <a href="{% url 'returns_page' %}">Returul produselor</a>.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
+                                Care este timpul de livrare?
+                            </button>
+                        </h2>
+                        <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Livrarea se face în 1-3 zile lucrătoare în toată România. Pentru București, livrarea se face în 1-2 zile lucrătoare.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="faq5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5">
+                                Cum pot contacta suportul client?
+                            </button>
+                        </h2>
+                        <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Poți contacta suportul client prin telefon la 0310.000.000, prin email la contact@e-nice.ro sau folosind formularul de contact de pe această pagină.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.contact-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-option {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.contact-option:hover {
+    background-color: #f8f9fa;
+    border-color: var(--primary-color);
+}
+
+.contact-option.active {
+    background-color: #e3f2fd;
+    border-color: var(--primary-color);
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+}
+
+.contact-text h6 {
+    margin: 0;
+    color: #333;
+}
+
+.contact-content {
+    display: none;
+}
+
+.contact-content.active {
+    display: block;
+}
+
+.contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.contact-detail-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-detail-info h6 {
+    margin: 0 0 0.25rem 0;
+    color: #333;
+    font-weight: 600;
+}
+
+.contact-detail-info p {
+    margin: 0;
+    color: #666;
+    line-height: 1.4;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    background: #f8f9fa;
+    color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.social-link:hover {
+    background: var(--primary-color);
+    color: white;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const contactOptions = document.querySelectorAll('.contact-option');
+    const contactContents = document.querySelectorAll('.contact-content');
+    
+    contactOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            // Remove active class from all options
+            contactOptions.forEach(opt => opt.classList.remove('active'));
+            contactContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked option
+            this.classList.add('active');
+            
+            // Show corresponding content
+            const target = this.getAttribute('data-target');
+            document.getElementById(target).classList.add('active');
+        });
+    });
+});
+</script>
+{% endblock %} 

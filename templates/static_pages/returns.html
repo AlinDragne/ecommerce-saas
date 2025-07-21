@@ -1,0 +1,295 @@
+{% extends 'static_pages/base_static.html' %}
+
+{% block title %}Returul produselor - E-Nice Help{% endblock %}
+
+{% block content %}
+<!-- Breadcrumbs -->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-custom">
+        <li class="breadcrumb-item"><a href="{% url 'landing_page' %}">E-Nice Help</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Returul produselor</li>
+    </ol>
+</nav>
+
+<!-- Page Title -->
+<h1 class="mb-4">Returul produselor</h1>
+
+<div class="row">
+    <!-- Left Sidebar with Return Options -->
+    <div class="col-lg-4 mb-4">
+        <div class="content-card">
+            <h4 class="mb-3">Metode de retur</h4>
+            
+            <div class="return-options">
+                <div class="return-option active" data-target="return-product">
+                    <div class="return-icon">
+                        <i class="bi bi-box-arrow-left"></i>
+                    </div>
+                    <div class="return-text">
+                        <h6>Returul unui produs</h6>
+                        <p class="text-muted small">Procedura generală de retur</p>
+                    </div>
+                </div>
+                
+                <div class="return-option" data-target="return-courier">
+                    <div class="return-icon">
+                        <i class="bi bi-truck"></i>
+                    </div>
+                    <div class="return-text">
+                        <h6>Retur prin curier</h6>
+                        <p class="text-muted small">Livrare la domiciliu</p>
+                    </div>
+                </div>
+                
+                <div class="return-option" data-target="return-easybox">
+                    <div class="return-icon">
+                        <i class="bi bi-box"></i>
+                    </div>
+                    <div class="return-text">
+                        <h6>Retur prin easybox</h6>
+                        <p class="text-muted small">Puncte de ridicare</p>
+                    </div>
+                </div>
+                
+                <div class="return-option" data-target="return-showroom">
+                    <div class="return-icon">
+                        <i class="bi bi-shop"></i>
+                    </div>
+                    <div class="return-text">
+                        <h6>Retur în showroom</h6>
+                        <p class="text-muted small">La sediul nostru</p>
+                    </div>
+                </div>
+                
+                <div class="return-option" data-target="return-post">
+                    <div class="return-icon">
+                        <i class="bi bi-envelope"></i>
+                    </div>
+                    <div class="return-text">
+                        <h6>Retur la un oficiu poștal</h6>
+                        <p class="text-muted small">Prin Poșta Română</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Right Content Area -->
+    <div class="col-lg-8">
+        <div class="content-card">
+            <!-- Default Content -->
+            <div id="return-product" class="return-content active">
+                <h3>Returul unui produs</h3>
+                <p class="lead">Pentru a returna un produs, este necesar să îl ambalați corespunzător și să trimiteți un email către retur@e-nice.ro cu dovada plății.</p>
+                
+                <h5>Pași pentru retur:</h5>
+                <ol>
+                    <li>Verifică că produsul îndeplinește condițiile de retur</li>
+                    <li>Ambală produsul în ambalajul original</li>
+                    <li>Completează formularul de retur</li>
+                    <li>Trimite email la retur@e-nice.ro</li>
+                    <li>Așteaptă confirmarea returului</li>
+                </ol>
+                
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <strong>Important:</strong> Produsele pot fi returnate în termen de 14 zile de la primirea comenzii.
+                </div>
+            </div>
+            
+            <!-- Courier Return -->
+            <div id="return-courier" class="return-content">
+                <h3>Retur prin curier</h3>
+                <p class="lead">Serviciul de retur prin curier este disponibil în toată România și este gratuit pentru comenzi peste 100 lei.</p>
+                
+                <h5>Procedura:</h5>
+                <ul>
+                    <li>Contactează-ne la 0310.000.000 pentru programarea ridicării</li>
+                    <li>Curierul va veni la adresa ta în ziua programată</li>
+                    <li>Produsul trebuie să fie ambalat corespunzător</li>
+                    <li>Primești dovada de retur la ridicare</li>
+                </ul>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h6>Program ridicări:</h6>
+                        <ul>
+                            <li>Luni - Vineri: 9:00 - 18:00</li>
+                            <li>Sâmbătă: 9:00 - 14:00</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Cost retur:</h6>
+                        <ul>
+                            <li>Gratuit pentru comenzi > 100 lei</li>
+                            <li>15 lei pentru comenzi < 100 lei</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Easybox Return -->
+            <div id="return-easybox" class="return-content">
+                <h3>Retur prin easybox</h3>
+                <p class="lead">Poți returna produsele la orice punct easybox din rețeaua noastră de parteneri.</p>
+                
+                <h5>Pași pentru retur prin easybox:</h5>
+                <ol>
+                    <li>Găsește cel mai apropiat punct easybox</li>
+                    <li>Scanează codul QR de pe ambalaj</li>
+                    <li>Introdu produsul în locker-ul disponibil</li>
+                    <li>Primești confirmarea prin SMS</li>
+                </ol>
+                
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    <strong>Limitare:</strong> Produsele mari nu pot fi returnate prin easybox.
+                </div>
+                
+                <h6>Puncte easybox disponibile:</h6>
+                <ul>
+                    <li>București - 25 de puncte</li>
+                    <li>Cluj-Napoca - 8 puncte</li>
+                    <li>Timișoara - 6 puncte</li>
+                    <li>Iași - 5 puncte</li>
+                </ul>
+            </div>
+            
+            <!-- Showroom Return -->
+            <div id="return-showroom" class="return-content">
+                <h3>Retur în showroom</h3>
+                <p class="lead">Poți returna produsele direct la sediul nostru din București, Str. Curățeniei nr. 7.</p>
+                
+                <h5>Informații showroom:</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Program:</h6>
+                        <ul>
+                            <li>Luni - Vineri: 9:00 - 18:00</li>
+                            <li>Sâmbătă: 9:00 - 14:00</li>
+                            <li>Duminică: Închis</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Ce trebuie să aduci:</h6>
+                        <ul>
+                            <li>Produsul în ambalaj original</li>
+                            <li>Dovada de plată</li>
+                            <li>Un act de identitate</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="alert alert-success">
+                    <i class="bi bi-check-circle me-2"></i>
+                    <strong>Avantaj:</strong> Returul în showroom este gratuit și primești banii înapoi imediat.
+                </div>
+            </div>
+            
+            <!-- Post Office Return -->
+            <div id="return-post" class="return-content">
+                <h3>Retur la un oficiu poștal</h3>
+                <p class="lead">Poți returna produsele prin orice oficiu poștal din România, folosind serviciul Poșta Română.</p>
+                
+                <h5>Procedura:</h5>
+                <ol>
+                    <li>Ambală produsul corespunzător</li>
+                    <li>Mergi la cel mai apropiat oficiu poștal</li>
+                    <li>Completează formularul de retur</li>
+                    <li>Plătește taxa de expediere (5-10 lei)</li>
+                    <li>Primești dovada de expediere</li>
+                </ol>
+                
+                <h6>Adresa pentru retur prin poștă:</h6>
+                <div class="bg-light p-3 rounded">
+                    <strong>E-Nice Cleaning Supplies SRL</strong><br>
+                    Str. Curățeniei nr. 7<br>
+                    Sector 1, București<br>
+                    Cod poștal: 010000
+                </div>
+                
+                <div class="alert alert-info mt-3">
+                    <i class="bi bi-info-circle me-2"></i>
+                    <strong>Notă:</strong> Timpul de procesare pentru retururile prin poștă este de 5-7 zile lucrătoare.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.return-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.return-option {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.return-option:hover {
+    background-color: #f8f9fa;
+    border-color: var(--primary-color);
+}
+
+.return-option.active {
+    background-color: #e3f2fd;
+    border-color: var(--primary-color);
+}
+
+.return-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+}
+
+.return-text h6 {
+    margin: 0;
+    color: #333;
+}
+
+.return-content {
+    display: none;
+}
+
+.return-content.active {
+    display: block;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const returnOptions = document.querySelectorAll('.return-option');
+    const returnContents = document.querySelectorAll('.return-content');
+    
+    returnOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            // Remove active class from all options
+            returnOptions.forEach(opt => opt.classList.remove('active'));
+            returnContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked option
+            this.classList.add('active');
+            
+            // Show corresponding content
+            const target = this.getAttribute('data-target');
+            document.getElementById(target).classList.add('active');
+        });
+    });
+});
+</script>
+{% endblock %} 
