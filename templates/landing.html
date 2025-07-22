@@ -198,6 +198,7 @@
             <!-- Desktop Navigation -->
             <div class="d-none d-md-flex justify-content-center flex-wrap">
                 <a href="{% url 'landing_page' %}" class="text-decoration-none text-dark mx-3 {% if request.resolver_match.url_name == 'landing_page' %}fw-bold{% endif %}">Acasă</a>
+                <a href="{% url 'categories:categories_overview' %}" class="text-decoration-none text-dark mx-3 {% if 'categories' in request.resolver_match.namespace %}fw-bold{% endif %}">Categorii</a>
                 <a href="{% url 'about_page' %}" class="text-decoration-none text-dark mx-3 {% if request.resolver_match.url_name == 'about_page' %}fw-bold{% endif %}">Despre noi</a>
                 <a href="{% url 'contact_page' %}" class="text-decoration-none text-dark mx-3 {% if request.resolver_match.url_name == 'contact_page' %}fw-bold{% endif %}">Contact</a>
                 <a href="{% url 'terms_page' %}" class="text-decoration-none text-dark mx-3 {% if request.resolver_match.url_name == 'terms_page' %}fw-bold{% endif %}">Termeni și condiții</a>
@@ -212,6 +213,7 @@
                     </button>
                     <ul class="dropdown-menu w-100">
                         <li><a class="dropdown-item {% if request.resolver_match.url_name == 'landing_page' %}active{% endif %}" href="{% url 'landing_page' %}">Acasă</a></li>
+                        <li><a class="dropdown-item {% if 'categories' in request.resolver_match.namespace %}active{% endif %}" href="{% url 'categories:categories_overview' %}">Categorii</a></li>
                         <li><a class="dropdown-item {% if request.resolver_match.url_name == 'about_page' %}active{% endif %}" href="{% url 'about_page' %}">Despre noi</a></li>
                         <li><a class="dropdown-item {% if request.resolver_match.url_name == 'contact_page' %}active{% endif %}" href="{% url 'contact_page' %}">Contact</a></li>
                         <li><a class="dropdown-item {% if request.resolver_match.url_name == 'terms_page' %}active{% endif %}" href="{% url 'terms_page' %}">Termeni și condiții</a></li>
@@ -226,41 +228,7 @@
         <div class="row">
             <!-- Sidebar with Categories -->
             <div class="col-lg-2 d-none d-lg-block">
-                <div class="category-sidebar">
-                    <h6 class="p-3 border-bottom">Categorii</h6>
-                    <a href="#" class="category-link">
-                        <i class="bi bi-droplet category-icon"></i>
-                        Soluții Pardoseli & Geamuri
-                    </a>
-                    <a href="#" class="category-link">
-                        <i class="bi bi-shield-check category-icon"></i>
-                        Detergenți universali, dezinfectanți
-                    </a>
-                    <a href="#" class="category-link">
-                        <i class="bi bi-moisture category-icon"></i>
-                        Săpun lichid & Gel de duș
-                    </a>
-                    <a href="#" class="category-link">
-                        <i class="bi bi-droplet-fill category-icon"></i>
-                        Detergent lichid & Vanish
-                    </a>
-                    <a href="#" class="category-link">
-                        <i class="bi bi-flower1 category-icon"></i>
-                        Odorizante cameră & Mănuși nitril
-                    </a>
-                    <a href="#" class="category-link">
-                        <i class="bi bi-bag category-icon"></i>
-                        Veselă unică folosință & Saci menajeri
-                    </a>
-                    <a href="#" class="category-link">
-                        <i class="bi bi-box category-icon"></i>
-                        Prosoape hârtie & Șervețele
-                    </a>
-                    <a href="#" class="category-link">
-                        <i class="bi bi-roll category-icon"></i>
-                        Hârtie igienică
-                    </a>
-                </div>
+                {% include 'includes/category_sidebar.html' %}
             </div>
             
             <!-- Main Content -->
