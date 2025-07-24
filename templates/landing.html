@@ -1,392 +1,296 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Nice Cleaning Supplies</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #0d6efd;
-            --secondary-color: #f8f9fa;
-            --accent-color: #198754;
-        }
-        
-        .navbar-brand {
-            font-weight: bold;
-            color: var(--primary-color) !important;
-        }
-        
-        .search-bar {
-            max-width: 500px;
-        }
-        
+{% extends 'base.html' %}
+
+{% block title %}E-Nice Cleaning Supplies{% endblock %}
+
+{% block extra_css %}
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    .category-sidebar {
+        background: white;
+        border-right: 1px solid #dee2e6;
+        min-height: calc(100vh - 80px);
+    }
+    
+    .category-link {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        color: #333;
+        text-decoration: none;
+        border-bottom: 1px solid #f8f9fa;
+        transition: background-color 0.2s;
+    }
+    
+    .category-link:hover {
+        background-color: #f8f9fa;
+        color: var(--primary-color);
+    }
+    
+    .category-icon {
+        margin-right: 10px;
+        width: 20px;
+        text-align: center;
+    }
+    
+    .hero-banner {
+        background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+        color: white;
+        border-radius: 10px;
+        padding: 40px;
+        margin-bottom: 30px;
+    }
+    
+    .shop-card {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+        margin: 0 10px;
+        min-width: 200px;
+        position: relative;
+    }
+    
+    .shop-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .shop-card a {
+        color: inherit;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .shop-card a:hover {
+        color: inherit;
+        text-decoration: none;
+    }
+    
+    .product-card {
+        background: white;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+        margin: 0 10px;
+        min-width: 200px;
+    }
+    
+    .product-card:hover {
+        transform: translateY(-3px);
+    }
+    
+    .product-image {
+        width: 100%;
+        height: 150px;
+        background: #f8f9fa;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        overflow: hidden;
+    }
+    
+    .product-image img {
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+    }
+    
+    .product-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        color: #6c757d;
+        font-size: 3rem;
+    }
+    
+    .product-placeholder p {
+        margin: 0.5rem 0 0 0;
+        font-size: 0.9rem;
+        color: #6c757d;
+    }
+    
+    .btn-outline-primary {
+        border-width: 2px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+    
+    .btn-outline-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(13, 110, 253, 0.3);
+    }
+    
+    /* Review styles */
+    .review-form {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 20px;
+    }
+    
+    .review-item {
+        border-bottom: 1px solid #dee2e6;
+        padding: 15px 0;
+    }
+    
+    .review-item:last-child {
+        border-bottom: none;
+    }
+    
+    .star-rating {
+        color: #ffc107;
+        font-size: 1.1rem;
+    }
+    
+    .review-author {
+        font-weight: 600;
+        color: #333;
+    }
+    
+    .review-date {
+        color: #6c757d;
+        font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
         .category-sidebar {
-            background: white;
-            border-right: 1px solid #dee2e6;
-            min-height: calc(100vh - 80px);
-        }
-        
-        .category-link {
-            display: flex;
-            align-items: center;
-            padding: 12px 15px;
-            color: #333;
-            text-decoration: none;
-            border-bottom: 1px solid #f8f9fa;
-            transition: background-color 0.2s;
-        }
-        
-        .category-link:hover {
-            background-color: #f8f9fa;
-            color: var(--primary-color);
-        }
-        
-        .category-icon {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-        
-        .hero-banner {
-            background: linear-gradient(135deg, #0d6efd, #0b5ed7);
-            color: white;
-            border-radius: 10px;
-            padding: 40px;
-            margin-bottom: 30px;
-        }
-        
-        .shop-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-            margin: 0 10px;
-            min-width: 200px;
-        }
-        
-        .shop-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .product-card {
-            background: white;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-            margin: 0 10px;
-            min-width: 200px;
-        }
-        
-        .product-card:hover {
-            transform: translateY(-3px);
-        }
-        
-        .product-image {
-            width: 100%;
-            height: 150px;
-            background: #f8f9fa;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-        
-        .scroll-container {
-            overflow-x: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-        }
-        
-        .scroll-container::-webkit-scrollbar {
             display: none;
         }
         
-        .scroll-content {
-            display: flex;
-            gap: 15px;
-            padding: 10px 0;
+        .hero-banner {
+            padding: 20px;
         }
         
-        .btn-primary-custom {
+        .shop-card, .product-card {
+            min-width: 150px;
+        }
+        
+        .dropdown-menu {
+            border-radius: 0;
+            margin-top: 0;
+        }
+        
+        .dropdown-item.active {
             background-color: var(--primary-color);
-            border-color: var(--primary-color);
+            color: white;
         }
-        
-        .btn-primary-custom:hover {
-            background-color: #c41e24;
-            border-color: #c41e24;
-        }
-        
-        @media (max-width: 768px) {
-            .category-sidebar {
-                display: none;
-            }
-            
-            .hero-banner {
-                padding: 20px;
-            }
-            
-            .shop-card, .product-card {
-                min-width: 150px;
-            }
-            
-            .dropdown-menu {
-                border-radius: 0;
-                margin-top: 0;
-            }
-            
-            .dropdown-item.active {
-                background-color: var(--primary-color);
-                color: white;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Top Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-        <div class="container-fluid">
-            <!-- Logo -->
-            <a class="navbar-brand" href="{% url 'landing_page' %}">
-                <i class="bi bi-droplet-fill"></i> E-Nice
-            </a>
-            
-            <!-- Search Bar -->
-            <div class="d-none d-md-block flex-grow-1 mx-4">
-                <div class="input-group search-bar mx-auto">
-                    <input type="text" class="form-control" placeholder="Start a new search...">
-                    <button class="btn btn-outline-secondary" type="button">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- User Account Links -->
-            <div class="navbar-nav ms-auto">
-                <div class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                        <i class="bi bi-person"></i> My Account
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Orders</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
-                    </ul>
-                </div>
-                <a class="nav-link" href="#">
-                    <i class="bi bi-heart"></i> Favorites
-                </a>
-                <a class="nav-link" href="#">
-                    <i class="bi bi-cart3"></i> My Cart
-                </a>
-            </div>
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar with Categories -->
+        <div class="col-lg-2 d-none d-lg-block">
+            {% include 'includes/category_sidebar.html' %}
         </div>
-    </nav>
-    
-    <!-- Secondary Navigation -->
-    <div class="bg-light py-2">
-        <div class="container-fluid">
-            <!-- Desktop Navigation -->
-            <div class="d-none d-md-flex justify-content-center flex-wrap">
-                <a href="{% url 'landing_page' %}" class="text-decoration-none text-dark mx-3 {% if request.resolver_match.url_name == 'landing_page' %}fw-bold{% endif %}">Acasă</a>
-                <a href="{% url 'categories:categories_overview' %}" class="text-decoration-none text-dark mx-3 {% if 'categories' in request.resolver_match.namespace %}fw-bold{% endif %}">Categorii</a>
-                <a href="{% url 'about_page' %}" class="text-decoration-none text-dark mx-3 {% if request.resolver_match.url_name == 'about_page' %}fw-bold{% endif %}">Despre noi</a>
-                <a href="{% url 'contact_page' %}" class="text-decoration-none text-dark mx-3 {% if request.resolver_match.url_name == 'contact_page' %}fw-bold{% endif %}">Contact</a>
-                <a href="{% url 'terms_page' %}" class="text-decoration-none text-dark mx-3 {% if request.resolver_match.url_name == 'terms_page' %}fw-bold{% endif %}">Termeni și condiții</a>
-                <a href="{% url 'returns_page' %}" class="text-decoration-none text-dark mx-3 {% if request.resolver_match.url_name == 'returns_page' %}fw-bold{% endif %}">Ajutor</a>
-            </div>
-            
-            <!-- Mobile Navigation -->
-            <div class="d-md-none">
-                <div class="dropdown">
-                    <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" data-bs-toggle="dropdown">
-                        <i class="bi bi-list me-2"></i>Meniu
-                    </button>
-                    <ul class="dropdown-menu w-100">
-                        <li><a class="dropdown-item {% if request.resolver_match.url_name == 'landing_page' %}active{% endif %}" href="{% url 'landing_page' %}">Acasă</a></li>
-                        <li><a class="dropdown-item {% if 'categories' in request.resolver_match.namespace %}active{% endif %}" href="{% url 'categories:categories_overview' %}">Categorii</a></li>
-                        <li><a class="dropdown-item {% if request.resolver_match.url_name == 'about_page' %}active{% endif %}" href="{% url 'about_page' %}">Despre noi</a></li>
-                        <li><a class="dropdown-item {% if request.resolver_match.url_name == 'contact_page' %}active{% endif %}" href="{% url 'contact_page' %}">Contact</a></li>
-                        <li><a class="dropdown-item {% if request.resolver_match.url_name == 'terms_page' %}active{% endif %}" href="{% url 'terms_page' %}">Termeni și condiții</a></li>
-                        <li><a class="dropdown-item {% if request.resolver_match.url_name == 'returns_page' %}active{% endif %}" href="{% url 'returns_page' %}">Ajutor</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar with Categories -->
-            <div class="col-lg-2 d-none d-lg-block">
-                {% include 'includes/category_sidebar.html' %}
-            </div>
-            
-            <!-- Main Content -->
-            <div class="col-lg-10">
-                <!-- Hero Banner -->
-                <div class="hero-banner">
-                    <div class="row align-items-center">
-                        <div class="col-md-6">
-                            <h1 class="display-4 fw-bold mb-3">Produse de Curățenie</h1>
-                            <p class="lead mb-4">Calitate profesională pentru casa ta!</p>
-                            <button class="btn btn-light btn-lg">Comandă Acum!</button>
-                            <p class="small mt-2">Livrare rapidă în toată România.</p>
+        
+        <!-- Main Content -->
+        <div class="col-lg-10">
+            <!-- Hero Banner -->
+            <div class="hero-banner">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h1 class="display-4 fw-bold mb-3">Produse de Curățenie</h1>
+                        <p class="lead mb-4">Calitate profesională pentru casa ta!</p>
+                        <button class="btn btn-light btn-lg">Comandă Acum!</button>
+                        <p class="small mt-2">Livrare rapidă în toată România.</p>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <div class="position-relative">
+                            <div style="width: 200px; height: 200px; background: rgba(255,255,255,0.2); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
+                                <i class="bi bi-droplet-fill"></i>
+                            </div>
+                            <div class="position-absolute" style="top: -20px; right: 20px;">
+                                <span class="badge bg-light text-dark">Oferte Speciale</span>
+                            </div>
+                            <div class="position-absolute" style="bottom: -20px; right: 20px;">
+                                <div class="text-center">
+                                    <div class="fw-bold">Gratuit</div>
+                                    <small>la comenzi peste 100 lei</small>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-6 text-center">
-                            <div class="position-relative">
-                                <div style="width: 200px; height: 200px; background: rgba(255,255,255,0.2); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; font-size: 4rem;">
-                                    <i class="bi bi-droplet-fill"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Categories -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <h2 class="mb-4">Categorii Populare</h2>
+                    <div class="d-flex overflow-auto">
+                        {% for category in popular_categories %}
+                        <div class="shop-card">
+                            <a href="{{ category.get_absolute_url }}" class="text-decoration-none">
+                                <div class="product-image">
+                                    {% if category.image %}
+                                        <img src="{{ category.image.url }}" alt="{{ category.get_display_name }}" class="img-fluid">
+                                    {% else %}
+                                        <i class="bi bi-box-seam" style="font-size: 3rem; color: #0d6efd;"></i>
+                                    {% endif %}
                                 </div>
-                                <div class="position-absolute" style="top: -20px; right: 20px;">
-                                    <span class="badge bg-light text-dark">Oferte Speciale</span>
-                                </div>
-                                <div class="position-absolute" style="bottom: -20px; right: 20px;">
-                                    <div class="text-center">
-                                        <div class="fw-bold">Gratuit</div>
-                                        <small>la comenzi peste 100 lei</small>
+                                <h5 class="text-dark">{{ category.get_display_name }}</h5>
+                                <p class="text-muted">{{ category.description|truncatewords:5|default:"Produse profesionale" }}</p>
+                                <span class="btn btn-outline-primary btn-sm">Vezi produse</span>
+                            </a>
+                        </div>
+                        {% empty %}
+                        <div class="col-12 text-center">
+                            <p class="text-muted">Nu există categorii populare configurate.</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Products -->
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="mb-4">Produse Recomandate</h2>
+                    <div class="d-flex overflow-auto">
+                        {% for product in featured_products %}
+                        <div class="product-card position-relative">
+                            <div class="product-image position-relative">
+                                {% if product.image_main %}
+                                    <img src="{{ product.image_main.url }}" alt="{{ product.name }}" class="img-fluid">
+                                {% else %}
+                                    <div class="product-placeholder">
+                                        <i class="bi bi-box-seam"></i>
+                                        <p>Imagine indisponibilă</p>
                                     </div>
-                                </div>
+                                {% endif %}
+                                {% if product.is_bestseller %}
+                                    <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2">Best Seller</span>
+                                {% endif %}
                             </div>
+                            <h6>{{ product.name }}</h6>
+                            <p class="text-primary fw-bold">{{ product.get_display_price }}</p>
+                            <a href="{% url 'products:product_detail' product.slug %}" class="btn btn-outline-primary btn-sm">Vezi detalii</a>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Popular Categories -->
-                <div class="mb-4">
-                    <h5 class="mb-3">Categorii Populare</h5>
-                    <div class="scroll-container">
-                        <div class="scroll-content">
-                            <div class="shop-card" style="background: linear-gradient(135deg, #0d6efd, #0b5ed7);">
-                                <i class="bi bi-droplet" style="font-size: 2rem; color: white;"></i>
-                                <h6 class="mt-2 text-white">Soluții Pardoseli</h6>
-                            </div>
-                            <div class="shop-card" style="background: linear-gradient(135deg, #198754, #157347);">
-                                <i class="bi bi-shield-check" style="font-size: 2rem; color: white;"></i>
-                                <h6 class="mt-2 text-white">Detergenți Universali</h6>
-                            </div>
-                            <div class="shop-card" style="background: linear-gradient(135deg, #6f42c1, #5a32a3);">
-                                <i class="bi bi-moisture" style="font-size: 2rem; color: white;"></i>
-                                <h6 class="mt-2 text-white">Săpun Lichid</h6>
-                            </div>
-                            <div class="shop-card" style="background: linear-gradient(135deg, #fd7e14, #e55a00);">
-                                <i class="bi bi-droplet-fill" style="font-size: 2rem; color: white;"></i>
-                                <h6 class="mt-2 text-white">Detergent Lichid</h6>
-                            </div>
-                            <div class="shop-card" style="background: linear-gradient(135deg, #d63384, #b02a6b);">
-                                <i class="bi bi-flower1" style="font-size: 2rem; color: white;"></i>
-                                <h6 class="mt-2 text-white">Odorizante Cameră</h6>
-                            </div>
-                            <div class="shop-card" style="background: linear-gradient(135deg, #20c997, #1a9f7a);">
-                                <i class="bi bi-bag" style="font-size: 2rem; color: white;"></i>
-                                <h6 class="mt-2 text-white">Veselă Unică</h6>
-                            </div>
-                            <div class="shop-card" style="background: linear-gradient(135deg, #6c757d, #5a6268);">
-                                <i class="bi bi-box" style="font-size: 2rem; color: white;"></i>
-                                <h6 class="mt-2 text-white">Prosoape Hârtie</h6>
-                            </div>
+                        {% empty %}
+                        <div class="col-12 text-center">
+                            <p class="text-muted">Nu există produse recomandate momentan.</p>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Recommendations Section -->
-                <div class="mb-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h5 class="mb-0">Recomandări</h5>
-                        <a href="#" class="text-decoration-none text-primary">
-                            Vezi toate <i class="bi bi-arrow-right"></i>
-                        </a>
-                    </div>
-                    <div class="scroll-container">
-                        <div class="scroll-content">
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <i class="bi bi-droplet" style="font-size: 3rem; color: #0d6efd;"></i>
-                                </div>
-                                <h6 class="mb-2">Soluție Pardoseli Premium</h6>
-                                <p class="text-muted small mb-2">Pentru toate tipurile de pardoseli</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold text-primary">25.99 lei</span>
-                                    <i class="bi bi-heart text-muted"></i>
-                                </div>
-                            </div>
-                            
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <i class="bi bi-shield-check" style="font-size: 3rem; color: #198754;"></i>
-                                </div>
-                                <h6 class="mb-2">Detergent Universal Concentrat</h6>
-                                <p class="text-muted small mb-2">5L, pentru toate suprafațele</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold text-primary">45.50 lei</span>
-                                    <i class="bi bi-heart text-muted"></i>
-                                </div>
-                            </div>
-                            
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <i class="bi bi-moisture" style="font-size: 3rem; color: #6f42c1;"></i>
-                                </div>
-                                <h6 class="mb-2">Săpun Lichid Antibacterial</h6>
-                                <p class="text-muted small mb-2">500ml, cu extract de aloe</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold text-primary">12.99 lei</span>
-                                    <i class="bi bi-heart text-muted"></i>
-                                </div>
-                            </div>
-                            
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <i class="bi bi-droplet-fill" style="font-size: 3rem; color: #fd7e14;"></i>
-                                </div>
-                                <h6 class="mb-2">Detergent Lichid Vanish</h6>
-                                <p class="text-muted small mb-2">Pentru rufe albe și colorate</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold text-primary">18.75 lei</span>
-                                    <i class="bi bi-heart text-muted"></i>
-                                </div>
-                            </div>
-                            
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <i class="bi bi-flower1" style="font-size: 3rem; color: #d63384;"></i>
-                                </div>
-                                <h6 class="mb-2">Odorizant Cameră Lavandă</h6>
-                                <p class="text-muted small mb-2">Aroma naturală, 300ml</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold text-primary">8.50 lei</span>
-                                    <i class="bi bi-heart text-muted"></i>
-                                </div>
-                            </div>
-                            
-                            <div class="product-card">
-                                <div class="product-image">
-                                    <i class="bi bi-box" style="font-size: 3rem; color: #6c757d;"></i>
-                                </div>
-                                <h6 class="mb-2">Prosoape Hârtie Premium</h6>
-                                <p class="text-muted small mb-2">3 straturi, 6 role</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="fw-bold text-primary">15.99 lei</span>
-                                    <i class="bi bi-heart text-muted"></i>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html> 
+</div>
+{% endblock %} 
